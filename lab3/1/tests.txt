@@ -1,0 +1,14 @@
+Range: 		 OneCell, ManyCells	
+Format: 	 Empty, NotEmpty, TextContains, TextNotContains, TextStartsWith, TextEndsWith, TextIsExactly, Equal, EqualOrGreater, EqualOrLess, Greater, Less, NotEqual, Between, NotBetween, Date, DateBefore, DateAfter, CustomExpression
+TypeCell: 	 Default, Date, Text, Number
+Bold:		 Yes, No
+Italic:		 Yes, No
+Underline:	 Yes, No
+Strikethrough: 	 Yes, No
+TextColor: 	 Transparent, Custom
+BackgroundColor: Transparent, Custom // обавить цвет пипетки и стандартный
+
+if [Format] in {"Equal", "EqualOrGreater", "EqualOrLess", "Greater", "Less", "NotEqual", "Between", "NotBetween", "CustomExpression"} then [TypeCell] = "Number";
+if [Format] in {"Date", "DateBefore", "DateAfter"} then [TypeCell] = "Date";
+if [Format] in {"TextContains", "TextNotContains", "TextStartsWith", "TextEndsWith", "TextIsExactly"} then [TypeCell] = "Text";
+if [Format] in {"Empty", "NotEmpty"} then [TypeCell] = "Default";
